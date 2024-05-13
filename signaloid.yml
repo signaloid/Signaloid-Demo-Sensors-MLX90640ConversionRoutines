@@ -1,0 +1,4 @@
+TraceVariables:
+  - File: "main.c"
+    LineNumber: 66
+    Expression: "pixelTemp"

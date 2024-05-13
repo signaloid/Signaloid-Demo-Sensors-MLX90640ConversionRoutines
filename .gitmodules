@@ -1,0 +1,6 @@
+[submodule "submodules/mlx90640-library"]
+	path = submodules/mlx90640-library
+	url = https://github.com/melexis/mlx90640-library/
+[submodule "submodules/common"]
+	path = submodules/common
+	url = ../../signaloid/Signaloid-Demo-CommonUtilityRoutines
