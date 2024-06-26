@@ -1,3 +1,3 @@
 SOURCES	= $(wildcard *.c)
 
-CFLAGS = -I ./src
+CFLAGS = -I./
