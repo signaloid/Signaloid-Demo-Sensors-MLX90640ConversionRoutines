@@ -190,7 +190,7 @@ getCommandLineArguments(int argc, char *  argv[], CommandLineArguments *  argume
 	if (pixelArg != NULL)
 	{
 		int pixel;
-		int ret = parseIntChecked(emissivityArg, &pixel);
+		int ret = parseIntChecked(pixelArg, &pixel);
 
 		if (ret != kCommonConstantReturnTypeSuccess)
 		{
