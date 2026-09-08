@@ -1,0 +1,20 @@
+MinimumCore:
+    Microarchitecture: Athens
+    MemorySize: 256000
+    Precision: 32
+
+TraceVariables:
+    - File: "main.c"
+
+      LineNumber: 54
+
+      Expression: "outputVariables[0:0]"
+
+BenchmarkingVariables:
+    - VariableName: outputVariables[0]
+      VariableDescription: Temperature of Pixel 400
+      OutputObject: Distribution
+      CommandLineArguments: -S 0
+
+BenchmarkingAllOutputs:
+    - CommandLineArguments: -S 1

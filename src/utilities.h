@@ -1,5 +1,5 @@
 /*
- *	Copyright (c) 2023, Signaloid.
+ *	Copyright (c) 2023-2026, Signaloid.
  *
  *	Permission is hereby granted, free of charge, to any person obtaining a copy
  *	of this software and associated documentation files (the "Software"), to deal
@@ -25,35 +25,36 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <inttypes.h>
-
 #include "common.h"
+
 
 typedef enum
 {
-	kMLX90640ConstantEEDataBufferSize 	= 832,
-	kMLX90640ConstantRawFrameBufferSize	= 834,
-	kMLX90640ConstantFrameBufferSize	= 768, /* 32*24 */
-	kMLX90640ConstantFrameWidth		= 32,
-	kMLX90640ConstantFrameHeight		= 24,
-	kMLX90640ConstantTaShift		= 8,
+	kMLX90640ConstantEEDataBufferSize   = 832,
+	kMLX90640ConstantRawFrameBufferSize = 834,
+	kMLX90640ConstantFrameBufferSize    = 768, /* 32*24 */
+	kMLX90640ConstantFrameWidth         = 32,
+	kMLX90640ConstantFrameHeight        = 24,
+	kMLX90640ConstantTaShift            = 8,
 } MLX90640Constant;
 
 typedef struct CommandLineArguments
 {
-	CommonCommandLineArguments	common;
+	CommonCommandLineArguments  common;
 
-	char				eeDataPath[kCommonConstantMaxCharsPerFilepath];
-	char				rawDataPath[kCommonConstantMaxCharsPerFilepath];
-	bool				modelQuantizationError;
-	bool				printAllTemperatures;
-	float				emissivity;
-	unsigned int			pixel;
+	char                        eeDataPath[kCommonConstantMaxCharsPerFilepath];
+	char                        rawDataPath[kCommonConstantMaxCharsPerFilepath];
+	bool                        modelQuantizationError;
+	bool                        printAllTemperatures;
+	float                       emissivity;
+	unsigned int                pixel;
 } CommandLineArguments;
 
 /**
  *	@brief	Print out command line usage.
  */
-void	printUsage(void);
+void
+printUsage(void);
 
 /**
  *	@brief	Get command line arguments.
@@ -63,8 +64,8 @@ void	printUsage(void);
  *	@param	arguments	: Pointer to struct to store arguments
  *	@return			: `kCommonConstantSuccess` if successful, else `kCommonConstantError`
  */
-CommonConstantReturnType getCommandLineArguments(int argc, char *  argv[], CommandLineArguments *  arguments);
-
+CommonConstantReturnType
+getCommandLineArguments(int argc, char *  argv[], CommandLineArguments *  arguments);
 
 /**
  *	@brief	Read raw uint16 adc data from file. Like read(2), returns number of elements read or -1 on failure.
@@ -75,7 +76,5 @@ CommonConstantReturnType getCommandLineArguments(int argc, char *  argv[], Comma
  *	@param	filename		: raw data csv file path
  *	@return	int			: number of values read if successful, else -1
  */
-int	readUint16DataFromCSV(uint16_t *  dest, int line, int maxLen, const char *  filename);
-
-#define kMLX90640ConstantEmissivityDistributionLowerBound	(0.93)
-#define kMLX90640ConstantEmissivityDistributionUpperBound	(0.97)
+int
+readUint16DataFromCSV(uint16_t * dest, int line, int maxLen, const char *  filename);
