@@ -20,38 +20,22 @@
  *	SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+#include <stddef.h>
+#include "mlx90640-uxhw.h"
+#include "kernel.h"
 
-void
-MLX90640_I2CInit(void)
+double
+mlx90640UxHw(
+	CommandLineArguments *  arguments,
+	double *                outputVariables,
+	double *                monteCarloOutputSamples)
 {
-}
+	double pixelTemperature;
 
-int
-MLX90640_I2CGeneralReset(void)
-{
-	return 0;
-}
+	pixelTemperature = mlx90640CalculatePixelTemperature(arguments);
 
-int
-MLX90640_I2CRead(
-	uint8_t     slaveAddr,
-	uint16_t    startAddress,
-	uint16_t    nMemAddressRead,
-	uint16_t *  data)
-{
-	return 0;
-}
+	outputVariables[kOutputVariableIndexFirstOutput] = pixelTemperature;
+	monteCarloOutputSamples[0] = pixelTemperature;
 
-int
-MLX90640_I2CWrite(uint8_t slaveAddr, uint16_t writeAddress, uint16_t data)
-{
-	return 0;
-}
-
-void
-MLX90640_I2CFreqSet(int freq)
-{
+	return pixelTemperature;
 }

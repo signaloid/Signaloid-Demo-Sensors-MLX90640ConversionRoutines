@@ -20,38 +20,28 @@
  *	SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+#pragma once
 
-void
-MLX90640_I2CInit(void)
-{
-}
+#include "utilities.h"
 
-int
-MLX90640_I2CGeneralReset(void)
-{
-	return 0;
-}
-
-int
-MLX90640_I2CRead(
-	uint8_t     slaveAddr,
-	uint16_t    startAddress,
-	uint16_t    nMemAddressRead,
-	uint16_t *  data)
-{
-	return 0;
-}
-
-int
-MLX90640_I2CWrite(uint8_t slaveAddr, uint16_t writeAddress, uint16_t data)
-{
-	return 0;
-}
-
-void
-MLX90640_I2CFreqSet(int freq)
-{
-}
+/**
+ *	@brief	UxHw-mode calculation kernel. Performs a single distributional
+ *		evaluation of the MLX90640 conversion routine: reads one full raw
+ *		frame and calibrates it via `mlx90640CalculatePixelTemperature`
+ *		(in `kernel.c`), using the emissivity already present in
+ *		`arguments->emissivity`.
+ *
+ *		Writes the result to
+ *		`outputVariables[kOutputVariableIndexFirstOutput]` and to
+ *		`monteCarloOutputSamples[0]`.
+ *
+ *	@param	arguments		: Command-line arguments.
+ *	@param	outputVariables		: Array of size `kOutputVariableIndexMax` to fill.
+ *	@param	monteCarloOutputSamples	: Single-element array for the distributional result.
+ *	@return	double			: Returns the calibrated pixel temperature.
+ */
+double
+mlx90640UxHw(
+	CommandLineArguments *  arguments,
+	double *                outputVariables,
+	double *                monteCarloOutputSamples);
